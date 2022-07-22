@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Registros de ganancias</title>
+     <link rel="stylesheet" href="style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+
+    <form id="idForm">
+        <div class="mb-3">
+            <label for="idNombre" class="form-label">Nombre y Apellido</label>
+            <input type="text" class="form-control" id="idNombre">
+          </div>
+        <div class="mb-3">
+          <label for="idEmail" class="form-label">Correo Electronico </label>
+          <input type="email" class="form-control" id="idEmail" >
+          <div id="emailHelp" class="form-text">No compartiremos tus datos con nadie.</div>
+        </div>
+        <div class="mb-3">
+          <label for="idconstraseña" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="idconstraseña">
+        </div>
+        <div class="mb-3">
+            <label for="idCapital" class="form-label">Capital a invertir</label>
+            <input type="number" class="form-control" id="idCapital">
+          </div>
+          <div class="mb-3">
+            <label for="idActivo" class="form-label">Nombre del activo</label>
+            <input type="text" class="form-control" id="idActivo" >
+            <div  class="form-text">Identifique el nombre del activo donde va a invertir</div>
+          </div>
+        <div class="mb-3">
+            <label for="idCompra" class="form-label">Precio de compra </label>
+            <input type="number" class="form-control" id="idCompra" >
+            <div  class="form-text">Precio donde entro en compra en el activo</div>
+          </div>
+          <div class="mb-3">
+            <label for="idVenta" class="form-label">Precio de Venta </label>
+            <input type="number" class="form-control" id="idVenta" >
+            <div  class="form-text">Precio donde vende su activo</div>
+          </div>
+          <select class="form-select" aria-label="Default select example" for="idApalancamiento" id="idApalancamiento">
+            <option selected>Selecione su apalancamiento</option>
+            <option value= 5>5x</option>
+            <option value= 10>10x</option>
+            <option value= 20>20x</option>
+            <option value= 30>30x</option>
+            <option value= 40>40x</option>
+            <option value= 50>50x</option>
+          </select>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Aceptar condiciones</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+      </form>
+      <div class="container">
+        <button id="botonUsuarios" class="btn btn-dark">Mostrar Usuarios</button>
+        <div id= "divUsuarios" class="row"></div>   
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
