@@ -1,12 +1,12 @@
 class Usuario{
-    constructor(nombre, email, constraseña, capital, activo, PrecioC, PrecioV, apalancamiento){
+    constructor(nombre, email, constraseña, capital, activo, precioC, precioV, apalancamiento){
         this.nombre = nombre
         this.email = email 
         this.constraseña = constraseña
         this.capital = capital
         this.activo = activo
-        this.PrecioC = PrecioC
-        this.PrecioV = PrecioV
+        this.precioC = precioC
+        this.precioV = precioV
         this.apalancamiento = apalancamiento
         
         
