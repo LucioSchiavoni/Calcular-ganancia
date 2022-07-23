@@ -20,7 +20,7 @@ class Usuario{
     
 }
 
-const usuarios = []
+let usuarios = []
 
 if(localStorage.getItem("usuarios")){
     usuarios = JSON.parse(localStorage.getItem("usuarios"))
@@ -45,6 +45,7 @@ form.addEventListener("submit", (e) =>{
     usuario.operacion();
     
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
+    formTareas.reset()
     
 })
 
@@ -54,20 +55,24 @@ let arrayStorage = JSON.parse(localStorage.getItem("usuarios"))
 divUsuarios.innerHTML = ""
 arrayStorage.forEach((usuario, indice) => {
     
-    divUsuarios.innerHTML +=  `<div class="card text-bg-primary mb-3" id="usuario${indice}" style="max-width: 18rem;">
-    <div class="card-header">${usuario.nombre}</div>
-    <div class="card-body">
-      <h5 class="card-title">operacion en ${usuario.activo}</h5>
-      <p class="card-text">Ganancia total +${usuario.resultado} $</p>
-    </div>  `
+    divUsuarios.innerHTML +=  `
+    <div class="card border-dark mb-3" id="usuario${indice}" style="max-width: 20rem; margin:4px;">
+        <div class="card-header"><h2>${usuario.nombre}</h2></div>
+        <div class="card-body">
+            <p class="card-title">${usuario.activo}</p>
+            <button class="btn btn-danger">Eliminar Tarea</button>
+        </div>
+    </div>
+    
+    `
 });
 
 arrayStorage.forEach((usuario, indice) => {
-    let botonCard = document.getElementById(`tareas${indice}`).lastElementChild.lastElementChild
-    botonCard.addEventListener("click", ()=> {
-        document.getElementById(`usuario${indice} `).remove()
-        tareas.splice(indice,1)
-    localStorage.setItem("usuario", JSON.stringify(usuarios))
+    let botonCard = document.getElementById(`usuario${indice}`).lastElementChild.lastElementChild
+    botonCard.addEventListener("click", () => {
+        document.getElementById(`usuario${indice}`).remove()
+        usuarios.splice(indice,1)
+    localStorage.setItem("usuarios", JSON.stringify(usuarios))
 console.log (`${usuario.nombre}) Eliminada`)   
 
     })
