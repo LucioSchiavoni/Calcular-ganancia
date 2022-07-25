@@ -8,7 +8,7 @@ class Usuario{
         this.precioC = precioC
         this.precioV = precioV
         this.apalancamiento = apalancamiento
-       
+        
         
     }
   
@@ -98,7 +98,7 @@ botonGanancia.addEventListener("click", () => {
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <p>capital inicial: ${usuario.capital} $</p>
-      <footer class="blockquote-footer">Sus ganancias en ${usuario.activo} son de: <cite title="Source Title">  +${resultado()} $</cite></footer>
+      <footer class="blockquote-footer">Sus ganancias en ${usuario.activo} son de: <cite title="Source Title">  +${usuario.resultado} $</cite></footer>
     </blockquote>
     <button class="btn btn-danger">Eliminar Tarea</button>
   </div>
