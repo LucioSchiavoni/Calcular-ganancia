@@ -11,7 +11,7 @@ class Usuario{
        
         
     }
-   
+  
 }
 let usuarios = []
  
@@ -77,6 +77,14 @@ console.log (`${usuario.nombre} Eliminada`)
 })
 
 
+function porcentaje(precioC, precioV){
+    return ((precioV-precioC)/precioC)*100;
+    
+   }
+   function resultado (porcentaje, apalancamiento, capital){
+    return ((porcentaje*apalancamiento)*capital)/100
+   }
+
 botonGanancia.addEventListener("click", () => {
 
     let arrayResultado = JSON.parse(localStorage.getItem("usuarios"))
@@ -90,7 +98,7 @@ botonGanancia.addEventListener("click", () => {
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <p>capital inicial: ${usuario.capital} $</p>
-      <footer class="blockquote-footer">Sus ganancias en ${usuario.activo} son de: <cite title="Source Title">  +${((100*usuario.apalancamiento)*usuario.capital)/100} $</cite></footer>
+      <footer class="blockquote-footer">Sus ganancias en ${usuario.activo} son de: <cite title="Source Title">  +${resultado()} $</cite></footer>
     </blockquote>
     <button class="btn btn-danger">Eliminar Tarea</button>
   </div>
@@ -101,7 +109,7 @@ botonGanancia.addEventListener("click", () => {
 })
 
 arrayResultado.forEach((usuario, indice) => {
-    let botonBorrar = document.getElementById(`usuario${indice}`).lastElementChild.lastElementChild.lastElementChild
+    let botonBorrar = document.getElementById(`usuario${indice}`).lastElementChild.lastElementChild
     botonBorrar.addEventListener("click", () => {
         document.getElementById(`usuario${indice}`).remove()
         usuarios.splice(indice, 1)
@@ -119,3 +127,6 @@ arrayResultado.forEach((usuario, indice) => {
 
 //calcular porcentaje:
 //((usuario.precioV-usuario.precioC)/usuario.precioC)*100
+
+//Boton de borrar:
+//<button class="btn btn-danger">Eliminar Tarea</button>
