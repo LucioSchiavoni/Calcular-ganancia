@@ -12,7 +12,7 @@ class Usuario{
         
     }
   operacion() {
-    return (((((this.precioV-this.precioC)/this.precioC)*100)*this.apalancamiento)*this.capital)/100;
+    return ((this.precioV-this.precioC)/this.precioC)*100
   }
 }
 let usuarios = []
@@ -45,7 +45,7 @@ form.addEventListener("submit", (e) =>{
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
     formTareas.reset();
 
-     mostrarInfo(usuario);
+     
     
 })
 
@@ -81,19 +81,22 @@ console.log (`${usuario.nombre} Eliminada`)
 })
 
 ///FUNCION PARA CALCULAR LA GANANCIA 
-function porcentaje(precioC, precioV){
+/*function porcentaje(precioC, precioV){
     return ((precioV-precioC)/precioC)*100;
     
    }
    function resultado (porcentaje, apalancamiento, capital){
     return ((porcentaje*apalancamiento)*capital)/100
    }
+*/
 
 
+botonGanancia.addEventListener("click", () => {
 
-   const mostrarInfo = (usuario) => {
-    let aux = "";
-    aux +=   `
+    let arrayResultado = JSON.parse(localStorage.getItem("usuarios"))
+    divGanancia.innerHTML = ""
+    arrayResultado.forEach((usuario, indice) => {
+        divGanancia.innerHTML =   `
         <div class="card" id="usuario${indice}" style="max-width: 20rem; margin: 4px;">
   <div class="card-header">
   nombre de activo:  ${usuario.activo}
@@ -106,10 +109,10 @@ function porcentaje(precioC, precioV){
     <button class="btn btn-danger">Eliminar Tarea</button>
   </div>
 </div>
-         `;
-         divGanancia.innerHTML = aux;
+         `
 
-    }
+    })
+})
 
 
 arrayResultado.forEach((usuario, indice) => {
