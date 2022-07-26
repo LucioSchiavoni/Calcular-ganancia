@@ -11,9 +11,9 @@ class Usuario{
         
         
     }
-  operacion() {
+  /*operacion() {
     return ((this.precioV-this.precioC)/this.precioC)*100
-  }
+  }*/
 }
 let usuarios = []
  
@@ -43,7 +43,7 @@ form.addEventListener("submit", (e) =>{
     
     
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
-    formTareas.reset();
+    form.reset();
 
      
     
@@ -64,7 +64,7 @@ arrayStorage.forEach((usuario, indice) => {
     </div>
     
     `
-});
+})
 
 arrayStorage.forEach((usuario, indice) => {
     let botonCard = document.getElementById(`usuario${indice}`).lastElementChild.lastElementChild
@@ -77,18 +77,17 @@ console.log (`${usuario.nombre} Eliminada`)
     })
 })
 
-
 })
 
 ///FUNCION PARA CALCULAR LA GANANCIA 
-/*function porcentaje(precioC, precioV){
+function porcentaje(precioC, precioV){
     return ((precioV-precioC)/precioC)*100;
     
    }
    function resultado (porcentaje, apalancamiento, capital){
     return ((porcentaje*apalancamiento)*capital)/100
    }
-*/
+
 
 
 botonGanancia.addEventListener("click", () => {
@@ -97,36 +96,31 @@ botonGanancia.addEventListener("click", () => {
     divGanancia.innerHTML = ""
     arrayResultado.forEach((usuario, indice) => {
         divGanancia.innerHTML =   `
-        <div class="card" id="usuario${indice}" style="max-width: 20rem; margin: 4px;">
-  <div class="card-header">
-  nombre de activo:  ${usuario.activo}
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>capital inicial: ${usuario.capital} $</p>
-      <footer class="blockquote-footer">Sus ganancias en ${usuario.activo} son de: <cite title="Source Title">  +${usuario.operacion()} $</cite></footer>
-    </blockquote>
-    <button class="btn btn-danger">Eliminar Tarea</button>
-  </div>
-</div>
-         `
+        <div class="card border-dark mb-3" id="usuario${indice}" style="max-width: 20rem; margin: 4px;">
+            <div class="card-header"><h2>${usuario.nombre}</h2></div>
+            <div class="card-body">
+                <p class="card-title">${resultado(usuario)}</p>
+                
+            </div>
+        </div>
+        
+        `
 
     })
-})
+
 
 
 arrayResultado.forEach((usuario, indice) => {
     let botonBorrar = document.getElementById(`usuario${indice}`).lastElementChild.lastElementChild
     botonBorrar.addEventListener("click", () => {
         document.getElementById(`usuario${indice}`).remove()
-        usuarios.splice(indice, 1)
+        usuarios.splice(indice,1)
         localStorage.setItem("usuarios", JSON.stringify(usuarios))
         console.log(`${usuario.nombre} Eliminada`)
     })
 })
 
-
-
+})
 //calcular ganancia total:
 //(porcentaje*usuario.apalancamiento)*usuario.capital)/100
 
