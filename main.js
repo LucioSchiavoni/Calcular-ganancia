@@ -11,7 +11,9 @@ class Usuario{
         
         
     }
-  
+  operacion() {
+    return (((((this.precioV-this.precioC)/this.precioC)*100)*this.apalancamiento)*this.capital)/100;
+  }
 }
 let usuarios = []
  
@@ -41,7 +43,9 @@ form.addEventListener("submit", (e) =>{
     
     
     localStorage.setItem("usuarios", JSON.stringify(usuarios))
-    formTareas.reset()
+    formTareas.reset();
+
+     mostrarInfo(usuario);
     
 })
 
@@ -76,7 +80,7 @@ console.log (`${usuario.nombre} Eliminada`)
 
 })
 
-
+///FUNCION PARA CALCULAR LA GANANCIA 
 function porcentaje(precioC, precioV){
     return ((precioV-precioC)/precioC)*100;
     
@@ -85,12 +89,11 @@ function porcentaje(precioC, precioV){
     return ((porcentaje*apalancamiento)*capital)/100
    }
 
-botonGanancia.addEventListener("click", () => {
 
-    let arrayResultado = JSON.parse(localStorage.getItem("usuarios"))
-    divGanancia.innerHTML = ""
-    arrayResultado.forEach((usuario, indice) => {
-        divGanancia.innerHTML =   `
+
+   const mostrarInfo = (usuario) => {
+    let aux = "";
+    aux +=   `
         <div class="card" id="usuario${indice}" style="max-width: 20rem; margin: 4px;">
   <div class="card-header">
   nombre de activo:  ${usuario.activo}
@@ -98,15 +101,16 @@ botonGanancia.addEventListener("click", () => {
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <p>capital inicial: ${usuario.capital} $</p>
-      <footer class="blockquote-footer">Sus ganancias en ${usuario.activo} son de: <cite title="Source Title">  +${usuario.resultado} $</cite></footer>
+      <footer class="blockquote-footer">Sus ganancias en ${usuario.activo} son de: <cite title="Source Title">  +${usuario.operacion()} $</cite></footer>
     </blockquote>
     <button class="btn btn-danger">Eliminar Tarea</button>
   </div>
 </div>
-         `
+         `;
+         divGanancia.innerHTML = aux;
 
-    })
-})
+    }
+
 
 arrayResultado.forEach((usuario, indice) => {
     let botonBorrar = document.getElementById(`usuario${indice}`).lastElementChild.lastElementChild
