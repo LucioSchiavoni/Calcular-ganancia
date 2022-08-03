@@ -18,11 +18,7 @@ class Usuario {
 let usuarios = [];
 
 
-if (localStorage.getItem("usuarios")) {
-    usuarios = JSON.parse(localStorage.getItem("usuarios"));
-} else {
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-}
+localStorage.getItem("usuarios") ? usuarios = JSON.parse(localStorage.getItem("usuarios")) : localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
 
 const form = document.getElementById("idForm");
