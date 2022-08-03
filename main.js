@@ -77,7 +77,7 @@ botonUsuarios.addEventListener("click", () => {
 
 ///FUNCION PARA CALCULAR LA GANANCIA 
 function porcentaje(precioC, precioV) {
-    return ((precioV - precioC) / precioC)*100;
+    return 100*((precioV - precioC) / precioC);
 
 }
 function resultado(porcentaje, apalancamiento, capital) {
